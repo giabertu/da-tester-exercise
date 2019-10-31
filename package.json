@@ -1,6 +1,6 @@
 {
   "name": "codeworks-da-tester-exercise",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "A Codeworks exercise to train students",
   "main": "index.js",
   "scripts": {
