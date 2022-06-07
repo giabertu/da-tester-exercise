@@ -14,7 +14,9 @@ We have replicated here 3 functions that are part of Instatags:
 - `filterTags()`
 - `filterMedia()`
 
-You now need to write comprehensive tests for them, mocking out the data that they’re supposed to handle.
+You now need to write comprehensive tests for them, mocking out the data that they’re supposed to handle. 
+
+Write unit tests for each method and also integration tests combining `evalHashtagFrequency` and `filterTags`.
 
 ### Underline
 
