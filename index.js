@@ -1,12 +1,9 @@
-
-var _ = require('lodash');
+const { min } = require("lodash");
+var _ = require("lodash");
 
 var methods = {
-
   instatags: {
-
     evalHashtagFrequency: function (data) {
-
       var tags = {};
 
       data.forEach(function (media) {
@@ -21,7 +18,7 @@ var methods = {
       for (var tag in tags) {
         sortable.push({
           tag: tag,
-          freq: tags[tag]
+          freq: tags[tag],
         });
       }
 
@@ -46,26 +43,33 @@ var methods = {
         if (media.tags.includes(tag)) filtered.push(media);
       });
       return filtered;
-    }
-
+    },
   },
 
   underline: {
-
     max: function (list, iteratee, context) {
-
+      if (!list.length) return -Infinity;
+      if (iteratee) {
+        var newIteratee = iteratee.bind(context);
+        iteratee = newIteratee;
+      }
+      return Math.max(..._.map(list, iteratee));
     },
 
     min: function (list, iteratee, context) {
-
+      if (!list.length) return Infinity;
+      if (iteratee) {
+        var newIteratee = iteratee.bind(context);
+        iteratee = newIteratee;
+      }
+      return Math.min(..._.map(list, iteratee));
     },
 
     size: function (list) {
-
-    }
-
-  }
-
+      if (!list.length && list instanceof Array) return 0;
+      return Object.keys(list).length;
+    },
+  },
 };
-
 module.exports = methods;
+array = [1, 2, 3];
