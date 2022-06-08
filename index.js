@@ -54,18 +54,6 @@ var methods = {
         iteratee = newIteratee;
       }
       return Math.max(..._.map(list, iteratee));
-      /*  let array = [];
-      if (Array.isArray(list)) {
-        for (var element of list) {
-          if (iteratee) {
-            array.push(iteratee(element));
-          } else {
-            return Math.max(...list);
-          }
-        }
-        list = array;
-      } 
-      return Math.max(...list); */
     },
 
     min: function (list, iteratee, context) {
@@ -83,8 +71,5 @@ var methods = {
     },
   },
 };
-// console.log(methods.instatags.filterTags({tag1:10, tag2:21, tag3:30},15))
 module.exports = methods;
 array = [1, 2, 3];
-console.log({ name: "moe", age: 40 }.length);
-console.log(typeof array == "object");
