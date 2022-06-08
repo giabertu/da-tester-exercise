@@ -2,13 +2,100 @@
 
 require("chai").should();
 
+const { expect } = require("chai");
 var methods = require("../index.js");
 var instatags = methods.instatags;
 var underline = methods.underline;
-var mocks = require('./mocks.js');
+var mocks = require("./mocks.js");
 
-describe('Instatags', function () {
-  
+describe("Instatags", function () {
+  describe("evalHashtagFrequency", function () {
+    it("should be an array", function () {
+      methods.instatags.evalHashtagFrequency([]).should.be.a("array");
+    });
+  });
+
+  describe("filterTags", function () {
+    it("given an array of tags, return tags that have the mimimum frequency", function () {
+      instatags
+        .filterTags(
+          [
+            { tagId: "bootcamp", freq: 10 },
+            { tagId: "student", freq: 21 },
+            { tagId: "coffee", freq: 27 },
+          ],
+          15
+        )
+        .should.eql([
+          { tagId: "student", freq: 21 },
+          { tagId: "coffee", freq: 27 },
+        ]);
+    });
+    it("should work on an empty array", function () {
+      methods.instatags.filterTags([], 15).should.eql([]);
+    });
+    it("if not passed an array, throws error", function () {
+      methods.instatags.filterTags
+        .bind(({ tagId: "bootcamp", freq: 10 }, 15))
+        .should.throw(TypeError);
+    });
+  });
+  describe("filterMedia", function () {
+    it("given an array of media, return medias that have a specific tag", function () {
+      expect(
+        methods.instatags.filterMedia(
+          [
+            {
+              tags: [
+                { tagId: "bootcamp", freq: 10 },
+                { tagId: "student", freq: 21 },
+                { tagId: "coffee", freq: 27 },
+              ],
+            },
+            {
+              tags: [
+                { tagId: "bootcamp", freq: 10 },
+                { tagId: "education", freq: 30 },
+                { tagId: "health", freq: 80 },
+              ],
+            },
+            {
+              tags: [
+                { tagId: "food", freq: 10 },
+                { tagId: "drink", freq: 21 },
+                { tagId: "computer", freq: 27 },
+              ],
+            },
+          ],
+          { tagId: "bootcamp", freq: 10 }
+        ) ==
+          [
+            {
+              tags: [
+                { tagId: "bootcamp", freq: 10 },
+                { tagId: "student", freq: 21 },
+                { tagId: "coffee", freq: 27 },
+              ],
+            },
+            {
+              tags: [
+                { tagId: "bootcamp", freq: 10 },
+                { tagId: "education", freq: 30 },
+                { tagId: "health", freq: 80 },
+              ],
+            },
+          ]
+      );
+    });
+    it("should work on an empty array", function () {
+      methods.instatags.filterMedia([], 15).should.eql([]);
+    });
+    it("if not passed an array, throws error", function () {
+      methods.instatags.filterMedia
+        .bind(({ tagId: "bootcamp", freq: 10 }, 15))
+        .should.throw(TypeError);
+    });
+  });
 });
 
 describe("Underline", function () {
