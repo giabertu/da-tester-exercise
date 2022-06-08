@@ -5,21 +5,10 @@ require("chai").should();
 var methods = require("../index.js");
 var instatags = methods.instatags;
 var underline = methods.underline;
-<<<<<<< HEAD
 var mocks = require('./mocks.js');
 
 describe('Instatags', function () {
   
-=======
-var mocks = require("./mocks.js");
-
-describe("Instatags", function () {
-  it("take a collection", () => {
-    instatags
-      .filterTags({ tag1: 10, tag2: 21, tag3: 30 }, 15)
-      .should.Throw("error");
-  });
->>>>>>> 6082a88bd4b639b89afbfaba0660691edacb2c79
 });
 
 describe("Underline", function () {
