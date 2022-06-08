@@ -1,14 +1,16 @@
-
 var mocks = {
-
-  instatags: {
-
+  /*  instatags: {
+    data: [media: {
+        tags: {}
+      }]
+      
+    }
   },
 
   underline: {
 
   }
-
+*/
 };
 
 module.exports = mocks;
