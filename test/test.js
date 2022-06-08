@@ -8,7 +8,7 @@ var underline = methods.underline;
 var mocks = require('./mocks.js');
 
 describe('Instatags', function () {
-
+  
 });
 
 describe('Underline', function () {
